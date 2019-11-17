@@ -58,7 +58,7 @@ class Mecanum {
                         Math.pow(leftStickY, 2)),
                 1);
         double thetaD = Math.atan2(-leftStickX, -leftStickY);
-        double vTheta = -rightStickX;
+        double vTheta = rightStickX;
         return new Motion(vD, thetaD, vTheta);
     }
 

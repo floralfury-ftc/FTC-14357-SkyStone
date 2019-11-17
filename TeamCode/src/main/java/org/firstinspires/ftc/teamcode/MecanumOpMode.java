@@ -51,7 +51,7 @@ public class MecanumOpMode extends OpMode {
     public void loop() {
         // Convert joysticks to desired motion.
         Mecanum.Motion motion = Mecanum.joystickToMotion(
-                gamepad1.left_stick_x, gamepad1.left_stick_y,
+                gamepad1.left_stick_x, -gamepad1.left_stick_y,
                 gamepad1.right_stick_x, gamepad1.right_stick_y);
 
         // Convert desired motion to wheel powers, with power clamping.

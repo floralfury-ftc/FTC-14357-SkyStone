@@ -103,7 +103,7 @@ public abstract class AutonOpMode extends LinearOpMode {
      * Move the robot forward a amount, treating the drive as a tank train
      * @param distance Distance, in inches, to move forward
      * @param maxPower Power at which to move motors
-     */
+     /
     void moveForward(double distance, double maxPower) {
         distance = distance - 1;
 
@@ -166,7 +166,7 @@ public abstract class AutonOpMode extends LinearOpMode {
      * Move the robot forward a amount, treating the drive as a tank train
      * @param distance Distance, in inches, to move forward
      * @param maxPower Power at which to move motors
-     */
+     /
     void moveBackward(double distance, double maxPower) {
         distance = distance - 1;
 
@@ -295,7 +295,7 @@ public abstract class AutonOpMode extends LinearOpMode {
      * TODO: Implement movement PID
      * @param distance Distance, in inches, to strafe
      * @param power Power at which to move motors
-     */
+     /
     void strafeLeft(double distance, double power) {
         distance = distance + 1;
         // Set up parameters for driving in a straight line.
@@ -338,7 +338,7 @@ public abstract class AutonOpMode extends LinearOpMode {
      * TODO: Implement movement PID
      * @param distance Distance, in inches, to strafe
      * @param power Power at which to move motors
-     */
+     /
     void strafeRight(double distance, double power) {
         distance = distance + 1;
         // Set up parameters for driving in a straight line.
@@ -384,6 +384,59 @@ public abstract class AutonOpMode extends LinearOpMode {
         for (DcMotor motor : robot.driveTrain) {
             toggleMotorDirection(motor);
         }
+    }
+
+
+    void moveForward(double time, double maxPower) {
+        double endTime = getRuntime() + time;
+
+        while (getRuntime() < endTime) {
+            robot.setLeftPower(maxPower);
+            robot.setRightPower(maxPower * 1.05);
+        }
+        robot.setDrivePower(0);
+        sleep(100);
+    }
+
+    void moveBackward(double time, double maxPower) {
+        double endTime = getRuntime() + time;
+
+        while (getRuntime() < endTime) {
+            robot.setLeftPower(-maxPower);
+            robot.setRightPower(-maxPower * 1.05);
+        }
+        robot.setDrivePower(0);
+        sleep(100);
+    }
+
+    void strafeLeft(double time, double maxPower) {
+        double endTime = getRuntime() + time;
+
+        robot.toggleLeftStrafe();
+
+        while (getRuntime() < endTime) {
+            robot.setLeftPower(-maxPower);
+            robot.setRightPower(-maxPower * 1.03);
+        }
+
+        robot.toggleLeftStrafe();
+        robot.setDrivePower(0);
+        sleep(100);
+    }
+
+    void strafeRight(double time, double maxPower) {
+        double endTime = getRuntime() + time;
+
+        robot.toggleRightStrafe();
+
+        while (getRuntime() < endTime) {
+            robot.setLeftPower(-maxPower);
+            robot.setRightPower(-maxPower * 1.03);
+        }
+
+        robot.toggleRightStrafe();
+        robot.setDrivePower(0);
+        sleep(100);
     }
 
     /**

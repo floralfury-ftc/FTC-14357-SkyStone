@@ -85,15 +85,6 @@ class RobotHardware {
         driveTrain.add(this.frontRightDrive);
         driveTrain.add(this.backLeftDrive);
         driveTrain.add(this.backRightDrive);
-
-        /*
-        hang = hardwareMap.dcMotor.get("hang");
-        hang.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        hang.setPower(0);
-
-        deployment1 = hardwareMap.servo.get("deployment1");
-        deployment2 = hardwareMap.servo.get("deployment2");
-        */
     }
 
     /**
