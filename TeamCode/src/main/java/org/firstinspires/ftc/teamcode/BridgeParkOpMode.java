@@ -16,8 +16,7 @@ public class AutonDriveOpMode extends AutonOpMode {
         // Initial autonomous config/movement
         super.runOpMode();
 
-        strafeRight(1, .5);
-        strafeLeft(1, .5);
+        moveForward(1, .5);
     }
 
     @Override
